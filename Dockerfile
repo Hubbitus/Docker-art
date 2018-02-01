@@ -3,7 +3,7 @@
 FROM tomcat:9-alpine
 MAINTAINER Pavel Alexeev <Pahan@Hubbitus.info>
 
-ENV ART_VERSION 3.0-beta3
+ENV ART_VERSION 3.2
 ENV ART_FILE art-${ART_VERSION}.zip
 
 RUN apk --no-cache add curl ttf-freefont unzip \
