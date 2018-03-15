@@ -1,1 +1,1 @@
-docker build -t docreg.taskdata.work/art:3.2 .
+docker build -t docreg.taskdata.work/art:3.0-beta3 .
