@@ -5,7 +5,7 @@ echo "HI FROM ART entrypoint!"
 
 export PGPASSWORD=$POSTGRES_PASSWORD
 
-psql -h db -U $POSTGRES_USER $POSTGRES_DB -c 'SELECT * FROM ART_DATABASE_VERSION'
+psql -h ${POSTGRES_HOST:-db} -U $POSTGRES_USER $POSTGRES_DB -c 'SELECT * FROM ART_DATABASE_VERSION'
 	if [[ $? > 0 ]]; then
 		echo "Seams DB does not initialised! Try to do so"
 
