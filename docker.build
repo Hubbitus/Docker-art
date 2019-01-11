@@ -1,1 +1,1 @@
-docker build -t art:3.0-beta3 .
+sudo docker build -t hubbitus/docker-art:4.0 .

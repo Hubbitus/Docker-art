@@ -1,0 +1,32 @@
+version: '2.1'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: art
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - art-db-data:/var/lib/postgresql/data:Z
+
+  art:
+    image: hubbitus/docker-art:4.0
+    ports:
+      - "8090:8080"
+      - "5007:5007"
+    # Hack. See https://sourceforge.net/p/art/discussion/352129/thread/8a5f47095a/
+    environment:
+      # Provide POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB variables if you wish DB auto-bootstrap (see entrypoint.sh)
+      POSTGRES_USER: art
+      POSTGRES_DB: art
+      POSTGRES_PASSWORD: secret
+      _JAVA_OPTIONS: "-Xmx4g"
+      # For debug:
+      #_JAVA_OPTIONS: "-Xmx4g -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5007"
+    depends_on:
+      db:
+        condition: service_started
+
+volumes:
+  art-db-data:
+    driver: local
