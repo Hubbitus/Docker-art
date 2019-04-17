@@ -8,6 +8,8 @@ services:
       POSTGRES_PASSWORD: secret
     volumes:
       - art-db-data:/var/lib/postgresql/data:Z
+    ports:
+      - "5433:5432"
 
   art:
     image: hubbitus/docker-art:4.0
